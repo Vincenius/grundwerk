@@ -15,25 +15,30 @@
 svg {
   height: auto;
   width: 200px;
-  /* position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translateX(-50%) translateY(-50%);
-  margin: auto; */
 }
 
 svg path {
   fill-opacity: 0;
   stroke: #000;
   stroke-width: 1;
-  stroke-dasharray: 10000;
-  stroke-dashoffset: 10000;
-  animation: draw 45s forwards linear;
+  /* stroke-dasharray = document.querySelector('svg path'); console.log(path.getTotalLength()); */
+  stroke-dasharray: 1793;
+  stroke-dashoffset: 1793;
+  animation:
+    draw 8s linear forwards,
+    fillIn 2s linear forwards 1s;
+  /* starts after draw finishes */
 }
 
 @keyframes draw {
   to {
     stroke-dashoffset: 0;
+  }
+}
+
+@keyframes fillIn {
+  to {
+    fill-opacity: 1;
   }
 }
 
@@ -45,17 +50,9 @@ body {
   align-items: center;
   margin: 0;
   background: white;
-  background-image: 
+  background-image:
     linear-gradient(to right, rgba(71, 85, 105, 0.15) 1px, transparent 1px),
     linear-gradient(to bottom, rgba(71, 85, 105, 0.15) 1px, transparent 1px),
     radial-gradient(circle at 50% 60%, rgba(236, 72, 153, 0.15) 0%, rgba(168, 85, 247, 0.05) 40%, transparent 70%);
   background-size: 40px 40px, 40px 40px, 100% 100%;
 }
-
-
-/* .logo-container {
-  position: relative;
-  width: 100%;
-  height: auto;
-  max-width: 200px;
-} */
