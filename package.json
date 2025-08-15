@@ -10,5 +10,13 @@
   },
   "devDependencies": {
     "vite": "^7.1.0"
+  },
+  "dependencies": {
+    "@tailwindcss/vite": "^4.1.11",
+    "gsap": "^3.13.0",
+    "rhino3dm": "^8.17.0",
+    "tailwindcss": "^4.1.11",
+    "three": "^0.179.1",
+    "ws": "^8.18.3"
   }
 }

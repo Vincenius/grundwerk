@@ -1,3 +1,5 @@
+@import "tailwindcss";
+
 :root {
   font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
@@ -10,6 +12,23 @@
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+header {
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: .5em;
+  margin: 0;
+  background: white;
+  background-image:
+    linear-gradient(to right, rgba(71, 85, 105, 0.15) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(71, 85, 105, 0.15) 1px, transparent 1px),
+    radial-gradient(circle at 50% 60%, rgba(236, 72, 153, 0.15) 0%, rgba(168, 85, 247, 0.05) 40%, transparent 70%);
+  background-size: 40px 40px, 40px 40px, 100% 100%;
 }
 
 svg {
@@ -27,7 +46,6 @@ svg path {
   animation:
     draw 8s linear forwards,
     fillIn 2s linear forwards 1s;
-  /* starts after draw finishes */
 }
 
 @keyframes draw {
@@ -42,17 +60,33 @@ svg path {
   }
 }
 
-body {
+.loading {
+  display: none;
+}
+
+#model-section {
   height: 100vh;
-  width: 100vw;
+}
+
+#model-canvas-wrapper {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+}
+
+#text-wrapper {
+  position: absolute;
+  bottom: 2rem;
+  left: 0;
+  width: 100%;
   display: flex;
   justify-content: center;
-  align-items: center;
-  margin: 0;
-  background: white;
-  background-image:
-    linear-gradient(to right, rgba(71, 85, 105, 0.15) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(71, 85, 105, 0.15) 1px, transparent 1px),
-    radial-gradient(circle at 50% 60%, rgba(236, 72, 153, 0.15) 0%, rgba(168, 85, 247, 0.05) 40%, transparent 70%);
-  background-size: 40px 40px, 40px 40px, 100% 100%;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.step-text {
+  font-size: 1.5rem;
+  opacity: 0;
+  transform: translateX(-100%); /* start off-screen left */
 }
