@@ -37,7 +37,7 @@ function createGradientTexture() {
   return texture;
 }
 
-const debug = true
+const debug = false // todo env
 
 document.body.style.opacity = 1;
 gsap.registerPlugin(ScrollTrigger);
