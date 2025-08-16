@@ -86,19 +86,19 @@ loader.load(
       }
     });
 
-    function animateStepText(selector, startTime) {
+    function animateStepText(selector, startTime, duration = 1) {
       tl.fromTo(selector,
         { opacity: 0, x: -200 }, // start left & hidden
-        { opacity: 1, x: 0, duration: 1, ease: "power2.out" }, // slide in
+        { opacity: 1, x: 0, duration: .2, ease: "power2.out" }, // slide in
         startTime
       )
         .to(selector,
-          { x: 50, duration: 1.5, ease: "linear" }, // drift slowly to right
-          startTime + 1
+          { x: 50, duration: duration - .4, ease: "linear" }, // drift slowly to right
+          startTime + .2
         )
         .to(selector,
-          { opacity: 0, x: 300, duration: 1, ease: "power2.in" }, // slide out right
-          startTime + 2.5
+          { opacity: 0, x: 200, duration: .2, ease: "power2.in" }, // slide out right
+          startTime + duration - .2
         );
     }
 
