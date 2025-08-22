@@ -1,0 +1,73 @@
+---
+const videoSrc = "/videos/product.mp4"; // Change to your video path
+---
+
+<section class="relative">
+  <div
+    class="video-section relative inset-0 w-screen h-screen overflow-hidden"
+    id="product-video-section"
+  >
+    <video
+      id="product-video"
+      src={videoSrc}
+      class="w-screen h-screen object-cover transition-all duration-500"
+      style="border-radius: 0; transform: scale(1);"
+      muted
+      playsinline
+      preload="auto"></video>
+    <div
+      class="overlay absolute inset-0 bg-black/70 flex items-center justify-center transition-opacity duration-500"
+      id="video-overlay"
+    >
+    </div>
+  </div>
+  <div class="absolute inset-0 pt-[50vh] px-[3em]">
+    <h1 class="text-white text-5xl text-center">
+      Introducing Our Product
+    </h1>
+    <h2 class="text-white text-3xl mt-4 text-center">
+      Experience the Future of Innovation
+  </div>
+</section>
+
+<script>
+  import { gsap } from "gsap";
+  import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+  gsap.registerPlugin(ScrollTrigger);
+
+  window.addEventListener("DOMContentLoaded", () => {
+    const videoSection = document.getElementById("product-video-section");
+    const video = document.getElementById("product-video");
+    const overlay = document.getElementById("video-overlay");
+
+    // Unified scrubbed timeline with two phases
+    const scrollTl = gsap.timeline({
+      scrollTrigger: {
+        trigger: videoSection,
+        start: "top top",
+        end: "+=1700px",
+        scrub: true,
+        pin: true,
+        pinSpacing: true,
+        onEnter: () => video.play(),
+        // onLeaveBack: () => video.pause(),
+      },
+    });
+
+    // Phase 1: fade overlay out in first 50% of scroll
+    scrollTl.to(overlay, { opacity: 0, duration: 0.5 }, 0);
+
+    // Phase 2: shrink + round video only after overlay is gone
+    scrollTl.to(
+      video,
+      {
+        scale: 0.8,
+        borderRadius: "48px",
+        ease: "power2.out",
+        duration: 0.5,
+      },
+      0.5 // starts right after overlay fade completes
+    );
+  });
+</script>

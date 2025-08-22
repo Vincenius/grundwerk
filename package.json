@@ -1,22 +1,17 @@
 {
   "name": "grundwerk",
-  "private": true,
-  "version": "0.0.0",
   "type": "module",
+  "version": "0.0.1",
   "scripts": {
-    "dev": "vite",
-    "build": "vite build",
-    "preview": "vite preview"
-  },
-  "devDependencies": {
-    "vite": "^7.1.0"
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro"
   },
   "dependencies": {
-    "@tailwindcss/vite": "^4.1.11",
+    "@tailwindcss/vite": "^4.1.12",
+    "astro": "^5.13.2",
     "gsap": "^3.13.0",
-    "rhino3dm": "^8.17.0",
-    "tailwindcss": "^4.1.11",
-    "three": "^0.179.1",
-    "ws": "^8.18.3"
+    "tailwindcss": "^4.1.12"
   }
 }

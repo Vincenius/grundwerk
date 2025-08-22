@@ -1,0 +1,75 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import Footer from "../../components/Footer.astro";
+import { Image } from "astro:assets";
+import header from "../../assets/products-bg.jpg";
+import Navbar from "../../components/Navbar.astro";
+import { products } from "../../data/products";
+---
+
+<Layout>
+  <header class="relative">
+    <Navbar />
+    <div class="header-bg absolute z-[-1]">
+      <Image src={header} alt="abstract background" />
+    </div>
+    <h1 class="text-6xl font-thin">Products</h1>
+  </header>
+
+  <main class="bg-white dark:bg-gray-800 my-10 h-full py-6 sm:py-8 lg:py-12">
+    <div class="mx-auto max-w-screen-2xl px-4 md:px-8">
+      <div class="grid grid-cols-2 gap-4 sm:grid-cols-3 md:gap-6 xl:gap-8">
+        {
+          products.map((product, idx) => {
+            let colSpan = "";
+            if (idx % 4 === 1 || idx % 4 === 2) {
+              colSpan = "md:col-span-2";
+            }
+
+            console.log(idx, idx % 5, colSpan)
+
+            return (
+              <a
+                href={product.link}
+                class={`group relative flex h-48 items-end overflow-hidden rounded-lg bg-gray-100 shadow-lg md:h-80 ${colSpan}`}
+              >
+                <img
+                  src={product.image}
+                  loading="lazy"
+                  alt={`${product.name}`}
+                  class="absolute inset-0 h-full w-full object-cover object-center transition duration-200 group-hover:scale-110"
+                />
+                <div class="pointer-events-none absolute inset-0 bg-gradient-to-t from-gray-800 via-transparent to-transparent opacity-50" />
+                <span class="relative ml-4 mb-3 inline-block text-sm text-white md:ml-5 md:text-lg">
+                  {product.name}
+                </span>
+              </a>
+            );
+          })
+        }
+      </div>
+    </div>
+  </main>
+
+  <Footer />
+</Layout>
+<style>
+  header {
+    height: 100%;
+    min-height: 50vh;
+  }
+
+  .header-bg img {
+    object-position: center;
+  }
+  .header-bg::after {
+    content: "";
+    opacity: 0.8;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    background: #fff;
+  }
+</style>
