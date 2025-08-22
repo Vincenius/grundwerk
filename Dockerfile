@@ -4,14 +4,14 @@ FROM node:22-alpine AS builder
 WORKDIR /app
 
 # Install dependencies
-COPY package*.json ./
-RUN npm install --frozen-lockfile
+COPY yarn.lock ./
+RUN yarn install --frozen-lockfile
 
 # Copy all project files
 COPY . .
 
 # Build the Astro app
-RUN npm run build
+RUN yarn build
 
 
 # Stage 2: Serve with a lightweight web server
