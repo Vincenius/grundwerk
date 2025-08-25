@@ -16,39 +16,58 @@ import { products } from "../../data/products";
     <h1 class="text-6xl font-thin">Products</h1>
   </header>
 
-  <main class="bg-white my-10 h-full py-6 sm:py-8 lg:py-12">
-    <div class="mx-auto max-w-screen-2xl px-4 md:px-8">
-      <div class="grid grid-cols-2 gap-4 sm:grid-cols-3 md:gap-6 xl:gap-8">
-        {
-          products.map((product, idx) => {
-            let colSpan = "";
-            if (idx % 4 === 1 || idx % 4 === 2) {
-              colSpan = "md:col-span-2";
-            }
+  <main>
+    <section id="products-section" class="py-20 relative bg-white">
+      <div class="w-full max-w-2xl lg:max-w-7xl px-6 lg:px-8 mx-auto">
+        <div
+          class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8 gap-y-16"
+        >
+          {
+            products.map((product, idx) => {
+              return (
+                <a href={product.link} data-product-card class={`group flex items-center flex-col gap-4 w-full`}>
+                  <div class="block w-full">
+                    <img
+                      class="rounded-3xl object-cover w-full h-[260px]"
+                      src={product.image}
+                      alt={`Project Achievements of ${product.name}`}
+                    />
+                  </div>
+                  <div class="flex items-center justify-between max-w-[406px] lg:max-w-full w-full lg:px-0">
+                    <div class="block">
+                      <p class="font-medium text-lg text-gray-400">
+                        {product.brand}
+                      </p>
+                      <h2 class="text-2xl font-manrope font-semibold text-gray-900 mb-1">
+                        {product.name}
+                      </h2>
+                    </div>
 
-            console.log(idx, idx % 5, colSpan)
-
-            return (
-              <a
-                href={product.link}
-                class={`group relative flex h-48 items-end overflow-hidden rounded-lg bg-gray-100 shadow-lg md:h-80 ${colSpan}`}
-              >
-                <img
-                  src={product.image}
-                  loading="lazy"
-                  alt={`${product.name}`}
-                  class="absolute inset-0 h-full w-full object-cover object-center transition duration-200 group-hover:scale-110"
-                />
-                <div class="pointer-events-none absolute inset-0 bg-gradient-to-t from-gray-800 via-transparent to-transparent opacity-50" />
-                <span class="relative ml-4 mb-3 inline-block text-sm text-white md:ml-5 md:text-lg">
-                  {product.name}
-                </span>
-              </a>
-            );
-          })
-        }
+                    <button class="border border-black py-2 px-3.5 rounded-full transition-all duration-300 group-hover:bg-black">
+                      <svg
+                        class="stroke-black transition-all duration-300 group-hover:stroke-white"
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="17"
+                        height="16"
+                        viewBox="0 0 17 16"
+                        fill="none"
+                      >
+                        <path
+                          d="M9.62553 4L13.6664 8.0409M13.6664 8.0409L9.62553 12.0818M13.6664 8.0409L1.6665 8.0409"
+                          stroke=""
+                          stroke-width="1.6"
+                          stroke-linecap="round"
+                        />
+                      </svg>
+                    </button>
+                  </div>
+                </a>
+              );
+            })
+          }
+        </div>
       </div>
-    </div>
+    </section>
   </main>
 
   <Footer />
@@ -73,3 +92,41 @@ import { products } from "../../data/products";
     background: #fff;
   }
 </style>
+<script>
+  import { gsap } from "gsap";
+  import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+  gsap.registerPlugin(ScrollTrigger);
+
+  window.addEventListener("DOMContentLoaded", () => {
+    const cards = document.querySelectorAll("[data-product-card]");
+
+    gsap.set(cards, { opacity: 0, y: 150 });
+
+    cards.forEach(card => {
+      ScrollTrigger.create({
+        trigger: card,
+        start: "top 85%",
+        onEnter: () => {
+          gsap.to(card, {
+            opacity: 1,
+            y: 0,
+            duration: 1,
+            ease: "power2.out"
+          });
+        },
+        once: true
+      });
+    });
+  });
+</script>
+              stagger: 0.08,
+              ease: "power2.out"
+            });
+          }
+        });
+      },
+      once: true
+    });
+  });
+</script>
