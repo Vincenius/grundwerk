@@ -1,47 +1,45 @@
 ---
-import { products } from '../data/products'
+import { products } from "../data/products";
+import Product from "./Product.astro";
 ---
 
-<section class="relative my-40" id="products-section">
-  <h1
-    class="font-bold text-4xl mb-20 text-center font-thin opacity-0"
-    id="products-heading"
-  >
-    Our Products
-  </h1>
-  <div
-    class="w-fit mx-auto grid grid-cols-1 lg:grid-cols-3 md:grid-cols-2 justify-items-center justify-center gap-y-20 gap-x-14 mt-10 mb-5"
-  >
-    {
-      products.map((product, idx) => (
-        <div
-          class="w-72 bg-white shadow-md rounded-xl duration-500 hover:scale-105 hover:shadow-xl opacity-0"
-          data-product-card
+<section class="relative my-40 px-8" id="products-section">
+  <div class="flex gap-8 max-w-6xl mx-auto md:flex-row flex-col">
+    <div class="flex flex-col gap-8">
+      <div>
+        <h2
+          id="products-heading"
+          class="font-bold text-4xl font-thin opacity-0 mb-8 underline"
         >
-          <a href={product.link}>
-            <img
-              src={product.image}
-              alt="Product"
-              class="h-80 w-72 object-cover rounded-t-xl"
-            />
-            <div class="px-4 py-3 w-72">
-              <span class="text-gray-400 mr-3 uppercase text-xs">{product.brand}</span>
-              <p class="text-lg font-bold text-black truncate block capitalize">
-                {product.name}
-              </p>
-            </div>
-          </a>
-        </div>
-      ))
-    }
-  </div>
-  <div class="flex justify-center mt-20">
-    <a
-      href="/products"
-      class="inline-block px-8 py-3 bg-black text-white font-semibold rounded-full shadow-lg hover:bg-gray-800 transition-colors duration-300 text-lg"
-    >
-      Show all products
-    </a>
+          Our Products
+        </h2>
+        <p
+          id="products-description"
+          class="text-lg text-gray-600 max-w-xl opacity-0"
+        >
+          Designer essentials that combine style, innovation, and effortless
+          performance for your everyday life.
+        </p>
+      </div>
+
+      <Product product={products[0]} />
+
+      <Product product={products[2]} />
+    </div>
+    <div class="flex flex-col gap-8">
+      <Product product={products[1]} />
+
+      <Product product={products[3]} />
+
+      <div class="flex justify-center">
+        <a
+          href="/products"
+          class="inline-block mt-8 px-8 py-3 bg-black text-white font-semibold rounded-full shadow-lg hover:bg-gray-800 transition-colors duration-300 text-lg"
+        >
+          Show all products
+        </a>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -54,32 +52,59 @@ import { products } from '../data/products'
   window.addEventListener("DOMContentLoaded", () => {
     const section = document.getElementById("products-section");
     const heading = document.getElementById("products-heading");
+    const description = document.getElementById("products-description");
     const cards = section.querySelectorAll("[data-product-card]");
+    const showAllBtn = section.querySelector("a.inline-block");
 
-    gsap.set(heading, { opacity: 0, y: 40 });
-    gsap.set(cards, { opacity: 0, y: 80 });
+    gsap.set([heading, description, ...cards, showAllBtn], {
+      opacity: 0,
+      y: 40,
+    });
 
-    ScrollTrigger.create({
-      trigger: section,
-      start: "top 80%",
-      onEnter: () => {
-        gsap.to(heading, {
+    const tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: section,
+        start: "top 80%",
+        once: true,
+      },
+    });
+
+    tl.to(heading, {
+      opacity: 1,
+      y: 0,
+      duration: 0.4,
+      ease: "power2.out",
+    })
+      .to(
+        description,
+        {
           opacity: 1,
           y: 0,
           duration: 0.4,
           ease: "power2.out",
-          onComplete: () => {
-            gsap.to(cards, {
-              opacity: 1,
-              y: 0,
-              duration: 0.2,
-              stagger: 0.08,
-              ease: "power2.out"
-            });
-          }
-        });
-      },
-      once: true
-    });
+        },
+        "-=0.2",
+      )
+      .to(
+        cards,
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.2,
+          stagger: 0.08,
+          ease: "power2.out",
+        },
+        "-=0.2",
+      )
+      .to(
+        showAllBtn,
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.3,
+          ease: "power2.out",
+        },
+        "-=0.1",
+      );
   });
 </script>

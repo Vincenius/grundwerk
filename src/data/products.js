@@ -1,44 +1,43 @@
+import headphones from "../assets/products/headphones/main.png";
+import printer from "../assets/products/printer/main.png";
+import suitecase from "../assets/products/case/main.png";
+import dishwasher from "../assets/products/dishwasher/main.png";
+
 export const products = [
   {
-    brand: "Brand",
-    name: "Product Name",
-    image:
-      "https://images.unsplash.com/photo-1646753522408-077ef9839300?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwcm9maWxlLXBhZ2V8NjZ8fHxlbnwwfHx8fA%3D%3D&auto=format&fit=crop&w=500&q=60",
+    brand: "Music, unleashed.",
+    name: "Headphones",
+    image: headphones,
+    link: "/products/product",
+  },
+  {
+    brand: "Ideas on paper.",
+    name: "Printer",
+    image: printer,
+    link: "/products/product",
+  },
+  {
+    brand: "Adventure ready.",
+    name: "Case",
+    image: suitecase,
+    link: "/products/product",
+  },
+  {
+    brand: "Sparkling simplicity.",
+    name: "Dishwasher",
+    image: dishwasher,
     link: "/products/product",
   },
   {
     brand: "Brand",
     name: "Product Name",
-    image:
-      "https://images.unsplash.com/photo-1651950519238-15835722f8bb?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwcm9maWxlLXBhZ2V8Mjh8fHxlbnwwfHx8fA%3D%3D&auto=format&fit=crop&w=500&q=60",
+    image: headphones,
     link: "/products/product",
   },
   {
     brand: "Brand",
     name: "Product Name",
-    image:
-      "https://images.unsplash.com/photo-1651950537598-373e4358d320?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwcm9maWxlLXBhZ2V8MjV8fHxlbnwwfHx8fA%3D%3D&auto=format&fit=crop&w=500&q=60",
-    link: "/products/product",
-  },
-  {
-    brand: "Brand",
-    name: "Product Name",
-    image:
-      "https://images.unsplash.com/photo-1651950540805-b7c71869e689?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwcm9maWxlLXBhZ2V8Mjl8fHxlbnwwfHx8fA%3D%3D&auto=format&fit=crop&w=500&q=60",
-    link: "/products/product",
-  },
-  {
-    brand: "Brand",
-    name: "Product Name",
-    image:
-      "https://images.unsplash.com/photo-1649261191624-ca9f79ca3fc6?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwcm9maWxlLXBhZ2V8NDd8fHxlbnwwfHx8fA%3D%3D&auto=format&fit=crop&w=500&q=60",
-    link: "/products/product",
-  },
-  {
-    brand: "Brand",
-    name: "Product Name",
-    image:
-      "https://images.unsplash.com/photo-1649261191606-cb2496e97eee?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwcm9maWxlLXBhZ2V8NDR8fHxlbnwwfHx8fA%3D%3D&auto=format&fit=crop&w=500&q=60",
+    image: headphones,
     link: "/products/product",
   },
 ];
