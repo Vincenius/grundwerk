@@ -5,6 +5,7 @@ import { Image } from "astro:assets";
 import header from "../../assets/products-bg.jpg";
 import Navbar from "../../components/Navbar.astro";
 import { products } from "../../data/products";
+import Products from "../../components/Products.astro";
 ---
 
 <Layout>
@@ -17,57 +18,7 @@ import { products } from "../../data/products";
   </header>
 
   <main>
-    <section id="products-section" class="py-20 relative bg-white">
-      <div class="w-full max-w-2xl lg:max-w-7xl px-6 lg:px-8 mx-auto">
-        <div
-          class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8 gap-y-16"
-        >
-          {
-            products.map((product, idx) => {
-              return (
-                <a href={product.link} data-product-card class={`group flex items-center flex-col gap-4 w-full`}>
-                  <div class="block w-full">
-                    <Image
-                      class="rounded-3xl object-cover w-full h-[360px]"
-                      src={product.image}
-                      alt={`Project Achievements of ${product.name}`}
-                    />
-                  </div>
-                  <div class="flex items-center justify-between max-w-[406px] lg:max-w-full w-full lg:px-0">
-                    <div class="block">
-                      <p class="font-medium text-lg text-gray-400">
-                        {product.brand}
-                      </p>
-                      <h2 class="text-2xl font-manrope font-semibold text-gray-900 mb-1">
-                        {product.name}
-                      </h2>
-                    </div>
-
-                    <button class="border border-black py-2 px-3.5 rounded-full transition-all duration-300 group-hover:bg-black">
-                      <svg
-                        class="stroke-black transition-all duration-300 group-hover:stroke-white"
-                        xmlns="http://www.w3.org/2000/svg"
-                        width="17"
-                        height="16"
-                        viewBox="0 0 17 16"
-                        fill="none"
-                      >
-                        <path
-                          d="M9.62553 4L13.6664 8.0409M13.6664 8.0409L9.62553 12.0818M13.6664 8.0409L1.6665 8.0409"
-                          stroke=""
-                          stroke-width="1.6"
-                          stroke-linecap="round"
-                        />
-                      </svg>
-                    </button>
-                  </div>
-                </a>
-              );
-            })
-          }
-        </div>
-      </div>
-    </section>
+    <Products showAll={true} />
   </main>
 
   <Footer />

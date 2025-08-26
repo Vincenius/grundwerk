@@ -1,44 +1,57 @@
 ---
 import { products } from "../data/products";
 import Product from "./Product.astro";
+
+// Add showall prop, default to true
+const { showAll = false } = Astro.props;
+
+const allProducts = !showAll ? products.slice(0, 4) : products;
+
+// Split products into even and odd index arrays
+let evenProducts = allProducts.filter((_, i) => i % 2 === 0);
+let oddProducts = allProducts.filter((_, i) => i % 2 !== 0);
 ---
 
 <section class="relative my-40 px-8" id="products-section">
   <div class="flex gap-8 max-w-6xl mx-auto md:flex-row flex-col">
     <div class="flex flex-col gap-8">
-      <div>
-        <h2
-          id="products-heading"
-          class="font-bold text-4xl font-thin opacity-0 mb-8 underline"
-        >
-          Our Products
-        </h2>
-        <p
-          id="products-description"
-          class="text-lg text-gray-600 max-w-xl opacity-0"
-        >
-          Designer essentials that combine style, innovation, and effortless
-          performance for your everyday life.
-        </p>
-      </div>
+      {
+        !showAll && (
+          <div>
+            <h2
+              id="products-heading"
+              class="font-bold text-4xl font-thin opacity-0 mb-8 underline"
+            >
+              Our Products
+            </h2>
+            <p
+              id="products-description"
+              class="text-lg text-gray-600 max-w-xl opacity-0"
+            >
+              Designer essentials that combine style, innovation, and effortless
+              performance for your everyday life.
+            </p>
+          </div>
+        )
+      }
 
-      <Product product={products[0]} />
-
-      <Product product={products[2]} />
+      {evenProducts.map((product) => <Product product={product} />)}
     </div>
     <div class="flex flex-col gap-8">
-      <Product product={products[1]} />
+      {oddProducts.map((product) => <Product product={product} />)}
 
-      <Product product={products[3]} />
-
-      <div class="flex justify-center">
-        <a
-          href="/products"
-          class="inline-block mt-8 px-8 py-3 bg-black text-white font-semibold rounded-full shadow-lg hover:bg-gray-800 transition-colors duration-300 text-lg"
-        >
-          Show all products
-        </a>
-      </div>
+      {
+        !showAll && (
+          <div class="flex justify-center">
+            <a
+              href="/products"
+              class="inline-block mt-8 px-8 py-3 bg-black text-white font-semibold rounded-full shadow-lg hover:bg-gray-800 transition-colors duration-300 text-lg"
+            >
+              Show all products
+            </a>
+          </div>
+        )
+      }
     </div>
   </div>
 </section>
@@ -58,7 +71,7 @@ import Product from "./Product.astro";
 
     gsap.set([heading, description, ...cards, showAllBtn], {
       opacity: 0,
-      y: 40,
+      y: 100,
     });
 
     const tl = gsap.timeline({
