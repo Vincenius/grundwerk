@@ -5,39 +5,51 @@ import dishwasher from "../assets/products/dishwasher/main.png";
 
 export const products = [
   {
-    brand: "Music, unleashed.",
+    tag: "Music, unleashed.",
     name: "Headphones",
     image: headphones,
-    link: "/products/product",
+    slug: "headphones",
+    gallery: [headphones, headphones, headphones, headphones, headphones],
+    description: "Crafted with clean lines and refined details, these headphones merge modern minimalism with cutting-edge acoustics. The design is as immersive as the sound—sleek, comfortable, and built to elevate every listening experience."
   },
   {
-    brand: "Ideas on paper.",
+    tag: "Ideas on paper.",
     name: "Printer",
     image: printer,
-    link: "/products/product",
+    slug: "printer",
+    gallery: [printer, printer, printer, printer, printer],
+    description: "This printer transforms a functional device into a design statement. With its elegant form and intuitive interface, it delivers precision while seamlessly fitting into any modern workspace."
   },
   {
-    brand: "Adventure ready.",
-    name: "Case",
+    tag: "Adventure ready.",
+    name: "Suitcase",
     image: suitecase,
-    link: "/products/product",
+    slug: "suitcase",
+    gallery: [suitecase, suitecase, suitecase, suitecase, suitecase],
+    description: "Designed for the modern traveler, this suitcase balances sophistication with strength. Its streamlined shape, premium materials, and effortless mobility make every journey both stylish and practical."
   },
   {
-    brand: "Sparkling simplicity.",
+    tag: "Sparkling simplicity.",
     name: "Dishwasher",
     image: dishwasher,
-    link: "/products/product",
+    slug: "dishwasher",
+    gallery: [dishwasher, dishwasher, dishwasher, dishwasher, dishwasher],
+    description: "Minimalist in form yet powerful in performance, this dishwasher redefines everyday convenience. Its clean design and seamless integration bring elegance to one of life’s most essential tasks."
   },
   {
-    brand: "Brand",
+    tag: "tag",
     name: "Product Name",
     image: headphones,
-    link: "/products/product",
+    slug: "product",
+    gallery: [headphones, headphones, headphones, headphones, headphones],
+    description: "Product description goes here."
   },
   {
-    brand: "Brand",
+    tag: "tag",
     name: "Product Name",
     image: headphones,
-    link: "/products/product",
+    slug: "product",
+    gallery: [headphones, headphones, headphones, headphones, headphones],
+    description: "Product description goes here."
   },
 ];

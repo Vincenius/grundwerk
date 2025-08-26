@@ -2,9 +2,8 @@
 import Layout from "../../layouts/Layout.astro";
 import Footer from "../../components/Footer.astro";
 import { Image } from "astro:assets";
-import header from "../../assets/products-bg.jpg";
+import header from "../../assets/abstract-bg.jpg";
 import Navbar from "../../components/Navbar.astro";
-import { products } from "../../data/products";
 import Products from "../../components/Products.astro";
 ---
 
@@ -12,7 +11,7 @@ import Products from "../../components/Products.astro";
   <header class="relative">
     <Navbar />
     <div class="header-bg absolute z-[-1]">
-      <Image src={header} alt="abstract background" />
+      <Image src={header} alt="abstract background" width={1200} />
     </div>
     <h1 class="text-6xl font-thin">Products</h1>
   </header>
