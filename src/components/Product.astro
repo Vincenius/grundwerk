@@ -8,7 +8,7 @@ import { Image } from "astro:assets";
   class={`block mx-auto w-full`}
   data-product-card
 >
-  <div class="bg-white shadow-lg border border-gray-100 rounded-xl overflow-hidden">
+  <div class="bg-white shadow-lg border border-gray-100 rounded-xl overflow-hidden transition-transform transition-shadow duration-200 hover:scale-[1.03] hover:shadow-xl">
     {product.image && <Image
       src={product.image}
       alt={product.name}
