@@ -1,0 +1,123 @@
+---
+import { websites } from "../data/websites";
+import Website from "./Website.astro";
+
+// Add showall prop, default to true
+const { showAll = false } = Astro.props;
+const allProducts = !showAll ? websites.slice(0, 4) : websites;
+
+// Split products into even and odd index arrays
+let evenProducts = allProducts.filter((_, i) => i % 2 === 0);
+let oddProducts = allProducts.filter((_, i) => i % 2 !== 0);
+---
+
+<section class="relative mt-40 py-40 px-8" id="websites-section">
+  {!showAll && <div class="bg-pattern" />}
+  <div class="flex gap-8 max-w-6xl mx-auto md:flex-row flex-col">
+    <div class="flex flex-col gap-8">
+      {
+        !showAll && (
+          <div>
+            <h2
+              id="websites-heading"
+              class="font-bold text-4xl font-thin opacity-0 mb-8 underline"
+            >
+              Our Websites
+            </h2>
+            <p
+              id="websites-description"
+              class="text-lg text-gray-600 max-w-xl opacity-0"
+            >
+              Projects that combine clean design, innovative solutions, and
+              seamless functionality for the web.
+            </p>
+          </div>
+        )
+      }
+
+      {evenProducts.map((product) => <Website product={product} />)}
+    </div>
+    <div class="flex flex-col gap-8">
+      {oddProducts.map((product) => <Website product={product} />)}
+
+      {
+        !showAll && (
+          <div class="flex justify-center">
+            <a
+              href="/web"
+              class="inline-block mt-8 px-8 py-3 bg-black text-white font-semibold rounded-full shadow-lg hover:bg-gray-800 transition-colors duration-300 text-lg"
+            >
+              Show all websites
+            </a>
+          </div>
+        )
+      }
+    </div>
+  </div>
+</section>
+
+<script>
+  import { gsap } from "gsap";
+  import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+  gsap.registerPlugin(ScrollTrigger);
+
+  window.addEventListener("DOMContentLoaded", () => {
+    const section = document.getElementById("websites-section");
+    const heading = document.getElementById("websites-heading");
+    const description = document.getElementById("websites-description");
+    const cards = section.querySelectorAll("[data-product-card]");
+    const showAllBtn = section.querySelector("a.inline-block");
+
+    gsap.set([heading, description, ...cards, showAllBtn], {
+      opacity: 0,
+      y: 100,
+    });
+
+    const tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: section,
+        start: "top 80%",
+        once: true,
+      },
+    });
+
+    tl.to(heading, {
+      opacity: 1,
+      y: 0,
+      duration: 0.4,
+      ease: "power2.out",
+    })
+      .to(
+        description,
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.4,
+          ease: "power2.out",
+        },
+        "-=0.2",
+      )
+      .to(
+        cards,
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.2,
+          stagger: 0.08,
+          ease: "power2.out",
+        },
+        "-=0.2",
+      )
+      .to(
+        showAllBtn,
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.3,
+          ease: "power2.out",
+        },
+        "-=0.1",
+      );
+  });
+</script>

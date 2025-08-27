@@ -1,0 +1,42 @@
+---
+const { product } = Astro.props;
+import { Image } from "astro:assets";
+---
+
+{product.url ? (
+  <a
+    href={product.url}
+    target="_blank"
+    rel="noopener noreferrer"
+    class={`block mx-auto w-full`}
+    data-product-card
+  >
+    <div class="bg-white shadow-lg border border-gray-100 rounded-xl overflow-hidden transition-transform transition-shadow duration-200 hover:scale-[1.03] hover:shadow-xl">
+      {product.image && <Image
+        src={product.image}
+        alt={product.name}
+        class="w-full h-84 object-cover"
+        width={1200}
+      />}
+      <div class="px-6 py-4">
+        <span class="text-gray-400 uppercase text-md block mb-2 uppercase">{product.tag}</span>
+        <h3 class="text-2xl font-bold text-black">{product.name}</h3>
+      </div>
+    </div>
+  </a>
+) : (
+  <div class="block mx-auto w-full" data-product-card>
+    <div class="bg-white shadow-lg border border-gray-100 rounded-xl overflow-hidden">
+      {product.image && <Image
+        src={product.image}
+        alt={product.name}
+        class="w-full h-84 object-cover"
+        width={1200}
+      />}
+      <div class="px-6 py-4">
+        <span class="text-gray-400 uppercase text-md block mb-2 uppercase">{product.tag}</span>
+        <h3 class="text-2xl font-bold text-gray-500">{product.name} (discontinued)</h3>
+      </div>
+    </div>
+  </div>
+)}

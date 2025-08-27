@@ -1,10 +1,10 @@
 ---
-import Layout from "../../layouts/Layout.astro";
-import Footer from "../../components/Footer.astro";
+import Layout from "../layouts/Layout.astro";
+import Footer from "../components/Footer.astro";
 import { Image } from "astro:assets";
-import header from "../../assets/abstract-bg.jpg";
-import Navbar from "../../components/Navbar.astro";
-import Products from "../../components/Products.astro";
+import header from "../assets/abstract-bg.jpg";
+import Navbar from "../components/Navbar.astro";
+import Websites from "../components/Websites.astro";
 ---
 
 <Layout>
@@ -13,11 +13,16 @@ import Products from "../../components/Products.astro";
     <div class="header-bg absolute z-[-1]">
       <Image src={header} alt="abstract background" width={1200} priority />
     </div>
-    <h1 class="text-6xl font-thin">Product Design</h1>
+    <h1 class="text-6xl font-thin">Web Development</h1>
   </header>
 
   <main>
-    <Products showAll={true} />
+    <p class="text-3xl text-gray-600 max-w-2xl text-center px-6 mx-auto my-32">
+      Below you’ll find a selection of websites we've designed and developed,
+      showcasing the focus on performance, usability, and modern design.
+    </p>
+
+    <Websites showAll={true} />
   </main>
 
   <Footer />
@@ -55,16 +60,16 @@ import Products from "../../components/Products.astro";
 
     ScrollTrigger.batch(cards, {
       start: "top 85%",
-      onEnter: batch => {
+      onEnter: (batch) => {
         gsap.to(batch, {
           opacity: 1,
           y: 0,
           duration: 1,
           stagger: 0.08,
-          ease: "power2.out"
+          ease: "power2.out",
         });
       },
-      once: true
+      once: true,
     });
   });
 </script>
