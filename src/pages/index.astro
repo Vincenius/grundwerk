@@ -16,11 +16,12 @@ import Navbar from "../components/Navbar.astro";
 		<Navbar />
 
 		<div class="header-bg">
-			<Image src={header} alt="grundwerk lettering" class="hidden md:block" />
+			<Image src={header} alt="grundwerk lettering" class="hidden md:block" priority />
 			<Image
 				src={headerMobile}
 				alt="grundwerk lettering"
 				class="block md:hidden"
+				priority
 			/>
 		</div>
 		<ScrollIndicator />
