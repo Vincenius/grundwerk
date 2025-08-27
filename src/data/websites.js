@@ -20,16 +20,16 @@ export const websites = [
     url: "https://foerderhaus24.de"
   },
   {
-    tag: "Web Development Blog",
-    name: "wweb.dev",
-    image: wweb,
-    url: "https://wweb.dev"
-  },
-  {
     tag: "Women's Magazine",
     name: "BildDerFrau.de",
     image: bildderfrau,
     url: "https://bildderfrau.de"
+  },
+  {
+    tag: "Web Development Blog",
+    name: "wweb.dev",
+    image: wweb,
+    url: "https://wweb.dev"
   },
   {
     tag: "Discover Music",
