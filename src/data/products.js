@@ -1,5 +1,11 @@
 import headphones from "../assets/products/headphones/main.png";
+
 import printer from "../assets/products/printer/main.png";
+import printer1 from "../assets/products/printer/01.png";
+import printer2 from "../assets/products/printer/02.png";
+import printer3 from "../assets/products/printer/03.png";
+import printer4 from "../assets/products/printer/04.png";
+
 import suitecase from "../assets/products/case/main.png";
 import dishwasher from "../assets/products/dishwasher/main.png";
 
@@ -17,7 +23,7 @@ export const products = [
     name: "Printer",
     image: printer,
     slug: "printer",
-    gallery: [printer, printer, printer, printer, printer],
+    gallery: [printer, printer1, printer2, printer3, printer4],
     description: "This printer transforms a functional device into a design statement. With its elegant form and intuitive interface, it delivers precision while seamlessly fitting into any modern workspace."
   },
   {

@@ -25,10 +25,10 @@ const product = products.find((p) => p.slug === slug);
     <h2 class="text-lg text-gray-600 uppercase">{product.tag}</h2>
   </header>
 
-  <main
-    class="bg-gray-100 h-full py-30 border-b border-gray-200"
-  >
-    <p class="text-lg md:text-2xl text-gray-600 mx-10 lg:mx-auto lg:max-w-[960px] text-center mb-30">
+  <main class="bg-gray-100 h-full py-30 border-b border-gray-200">
+    <p
+      class="text-lg md:text-2xl text-gray-600 mx-10 lg:mx-auto lg:max-w-[960px] text-center mb-30"
+    >
       {product.description}
     </p>
     <div class="swiper">
@@ -40,7 +40,7 @@ const product = products.find((p) => p.slug === slug);
                 src={item}
                 alt={product.name}
                 width={1200}
-                class="w-full h-auto object-cover rounded-2xl"
+                class="w-full h-160 object-cover rounded-2xl"
               />
             </div>
           ))
@@ -64,6 +64,13 @@ const product = products.find((p) => p.slug === slug);
         &rarr;
       </button>
     </div>
+
+    <!-- 3d model -->
+    <!-- <div
+      class="bg-white flex justify-center items-center w-[75vw] max-w-[1200px] mx-auto my-32 rounded-2xl overflow-hidden"
+    >
+      testy
+    </div> -->
   </main>
 
   <Footer />
