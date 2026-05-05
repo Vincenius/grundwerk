@@ -1,5 +1,5 @@
 ---
-const videoSrc = "/videos/product.mp4"; // Change to your video path
+const videoSrc = "/videos/headphone-preview.mp4"; // Change to your video path
 ---
 
 <section class="relative">
@@ -7,18 +7,25 @@ const videoSrc = "/videos/product.mp4"; // Change to your video path
     class="video-section relative inset-0 w-screen h-screen overflow-hidden"
     id="product-video-section"
   >
-    <video
-      id="product-video"
-      src={videoSrc}
-      class="w-screen h-screen object-cover transition-all duration-500"
-      style="border-radius: 0; transform: scale(1);"
-      muted
-      playsinline
-      preload="auto"></video>
     <div
-      class="overlay absolute inset-0 bg-black/70 flex items-center justify-center transition-opacity duration-500"
-      id="video-overlay"
+      id="video-wrapper"
+      class="relative w-screen h-screen overflow-hidden"
+      style="transform-origin: center center; border-radius: 0;"
     >
+      <video
+        id="product-video"
+        src={videoSrc}
+        class="w-full h-full object-cover"
+        style="border-radius: 0;"
+        muted
+        playsinline
+        loop
+        preload="auto"></video>
+      <div
+        class="overlay absolute inset-0 bg-black/70 flex items-center justify-center"
+        id="video-overlay"
+      >
+      </div>
     </div>
   </div>
   <div class="absolute inset-0 pt-[50vh] px-[3em]">
@@ -40,6 +47,7 @@ const videoSrc = "/videos/product.mp4"; // Change to your video path
   window.addEventListener("DOMContentLoaded", () => {
     const videoSection = document.getElementById("product-video-section");
     const video = document.getElementById("product-video");
+    const videoWrapper = document.getElementById("video-wrapper");
     const overlay = document.getElementById("video-overlay");
 
     // Unified scrubbed timeline with two phases
@@ -47,7 +55,7 @@ const videoSrc = "/videos/product.mp4"; // Change to your video path
       scrollTrigger: {
         trigger: videoSection,
         start: "top top",
-        end: "+=1200px",
+        end: "+=600px",
         scrub: true,
         pin: true,
         pinSpacing: true,
@@ -56,19 +64,19 @@ const videoSrc = "/videos/product.mp4"; // Change to your video path
       },
     });
 
-    // Phase 1: fade overlay out in first 50% of scroll
-    scrollTl.to(overlay, { opacity: 0, duration: 0.5 }, 0);
+    // Phase 1: wait, then fade overlay out
+    scrollTl.to(overlay, { opacity: 0.2, duration: 0.4 }, 0.5);
 
-    // Phase 2: shrink + round video only after overlay is gone
+    // Phase 2: shrink + round video wrapper only after overlay is gone
     scrollTl.to(
-      video,
+      videoWrapper,
       {
         scale: 0.8,
         borderRadius: "48px",
         ease: "power2.out",
         duration: 0.5,
       },
-      0.5 // starts right after overlay fade completes
+      0.7 // starts right after overlay fade completes
     );
   });
 </script>

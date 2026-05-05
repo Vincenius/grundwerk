@@ -42,20 +42,4 @@ export const products = [
     gallery: [dishwasher, dishwasher, dishwasher, dishwasher, dishwasher],
     description: "Minimalist in form yet powerful in performance, this dishwasher redefines everyday convenience. Its clean design and seamless integration bring elegance to one of life’s most essential tasks."
   },
-  {
-    tag: "tag",
-    name: "Product Name",
-    image: headphones,
-    slug: "product",
-    gallery: [headphones, headphones, headphones, headphones, headphones],
-    description: "Product description goes here."
-  },
-  {
-    tag: "tag",
-    name: "Product Name",
-    image: headphones,
-    slug: "product",
-    gallery: [headphones, headphones, headphones, headphones, headphones],
-    description: "Product description goes here."
-  },
 ];
