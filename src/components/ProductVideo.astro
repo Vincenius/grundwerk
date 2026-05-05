@@ -1,5 +1,7 @@
 ---
 const videoSrc = "/videos/headphone-preview.mp4"; // Change to your video path
+const videoSrcWebm = "/videos/headphone-preview.webm"; // Change to your video path
+const videoSrcMp4 = "/videos/headphone-preview.mp4"; // Change to your video path
 ---
 
 <section class="relative">
@@ -14,13 +16,16 @@ const videoSrc = "/videos/headphone-preview.mp4"; // Change to your video path
     >
       <video
         id="product-video"
-        src={videoSrc}
         class="w-full h-full object-cover"
         style="border-radius: 0;"
         muted
         playsinline
         loop
-        preload="auto"></video>
+        preload="auto"
+      >
+        <source src={videoSrcWebm} type="video/webm" />
+        <source src={videoSrcMp4} type="video/mp4" />
+      </video>
       <div
         class="overlay absolute inset-0 bg-black/70 flex items-center justify-center"
         id="video-overlay"
@@ -76,7 +81,7 @@ const videoSrc = "/videos/headphone-preview.mp4"; // Change to your video path
         ease: "power2.out",
         duration: 0.5,
       },
-      0.7 // starts right after overlay fade completes
+      0.7, // starts right after overlay fade completes
     );
   });
 </script>
