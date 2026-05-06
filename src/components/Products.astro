@@ -1,5 +1,5 @@
 ---
-import { products } from "../data/products";
+import { products } from "../data/design";
 import Product from "./Product.astro";
 
 // Add showall prop, default to true
@@ -28,7 +28,7 @@ let oddProducts = allProducts.filter((_, i) => i % 2 !== 0);
               id="products-description"
               class="text-lg text-gray-600 max-w-xl opacity-0"
             >
-              Explore our design portfolio. These are conceptual case studies showcasing our approach to product design—innovative solutions, refined aesthetics, and thoughtful functionality.
+              Explore our design portfolio. These are conceptual case studies showcasing our approach to product design. Innovative solutions, refined aesthetics, and thoughtful functionality.
             </p>
           </div>
         )
@@ -43,7 +43,7 @@ let oddProducts = allProducts.filter((_, i) => i % 2 !== 0);
         !showAll && (
           <div class="flex justify-center">
             <a
-              href="/products"
+              href="/design"
               class="inline-block mt-8 px-8 py-3 bg-black text-white font-semibold rounded-full shadow-lg hover:bg-gray-800 transition-colors duration-300 text-lg"
             >
               Show all products
@@ -76,7 +76,7 @@ let oddProducts = allProducts.filter((_, i) => i % 2 !== 0);
     const tl = gsap.timeline({
       scrollTrigger: {
         trigger: section,
-        start: "top 80%",
+        start: "top 90%",
         once: true,
       },
     });
